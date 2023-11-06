@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-from torchvision.models import vgg16
+from torchvision.models import vgg16, VGG16_Weights
 from pathlib import Path
 
 
@@ -67,7 +67,7 @@ def make_arch(idx, cfg, use_bias, batch_norm=False):
 class Vgg16(torch.nn.Module):
     def __init__(self, pretrain):
         super(Vgg16, self).__init__()
-        features = list(vgg16('vgg16-397923af.pth').features)
+        features = list(vgg16(weights=VGG16_Weights.DEFAULT).features)
 
         if not pretrain:
             for ind, f in enumerate(features):

@@ -5,7 +5,7 @@ import cv2
 
 def get_config(config):
     with open(config, 'r') as stream:
-        return yaml.load(stream)
+        return yaml.load(stream, Loader=yaml.FullLoader)
 
 
 def convert_to_grayscale(im_as_arr):
