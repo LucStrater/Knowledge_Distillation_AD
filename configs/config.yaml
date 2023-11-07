@@ -19,7 +19,7 @@ pretrain: True # True:use pre-trained vgg as source network --- False:use random
 use_bias: False # True:using bias term in neural network layer
 equal_network_size: False # True:using equal network size for cloner and source network --- False:smaller network for cloner
 direction_loss_only: False
-continue_train: False
+continue_train: True
 
 
 # Test parameters
