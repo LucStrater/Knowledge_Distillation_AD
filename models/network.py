@@ -2,6 +2,7 @@ import torch
 from torch import nn
 from torchvision.models import vgg16, VGG16_Weights
 from pathlib import Path
+import os
 
 
 class VGG(nn.Module):
@@ -115,14 +116,19 @@ def get_networks(config, load_checkpoint=False):
 
     if load_checkpoint:
         last_checkpoint = config['last_checkpoint']
-        checkpoint_path = "/content/Knowledge_Distillation_AD/outputs/{}/{}/checkpoints/".format(experiment_name, dataset_name)
-        model.load_state_dict(
-            torch.load('{}Cloner_{}_epoch_{}.pth'.format(checkpoint_path, normal_class, last_checkpoint)))
+        cwd = os.getcwd()
+        print(cwd)
+        checkpoint_path = "{}/outputs/{}/{}/checkpoints/".format(cwd, experiment_name, dataset_name)
+        print(checkpoint_path)
+        name = '{}Cloner_{}_epoch_{}.pth'.format(checkpoint_path, normal_class, last_checkpoint)
+        print(name)
+        model.load_state_dict(torch.load(name))
         if not pretrain:
             vgg.load_state_dict(
                 torch.load('{}Source_{}_random_vgg.pth'.format(checkpoint_path, normal_class)))
     elif not pretrain:
-        checkpoint_path = "/content/Knowledge_Distillation_AD/outputs/{}/{}/checkpoints/".format(experiment_name, dataset_name)
+        cwd = os.getcwd()
+        checkpoint_path = "{}/outputs/{}/{}/checkpoints/".format(cwd, experiment_name, dataset_name)
         Path(checkpoint_path).mkdir(parents=True, exist_ok=True)
 
         torch.save(vgg.state_dict(), '{}Source_{}_random_vgg.pth'.format(checkpoint_path, normal_class))
