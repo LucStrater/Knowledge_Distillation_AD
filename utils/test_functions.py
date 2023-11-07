@@ -1,6 +1,6 @@
 from torch import nn
 from sklearn.metrics import roc_curve, auc
-from utils.utils import morphological_process, convert_to_grayscale, max_regarding_to_abs
+from utils import morphological_process, convert_to_grayscale, max_regarding_to_abs
 from scipy.ndimage.filters import gaussian_filter
 import numpy as np
 import torch
