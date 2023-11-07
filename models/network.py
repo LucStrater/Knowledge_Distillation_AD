@@ -117,11 +117,8 @@ def get_networks(config, load_checkpoint=False):
     if load_checkpoint:
         last_checkpoint = config['last_checkpoint']
         cwd = os.getcwd()
-        print(cwd)
         checkpoint_path = "{}/outputs/{}/{}/checkpoints/".format(cwd, experiment_name, dataset_name)
-        print(checkpoint_path)
         name = '{}Cloner_{}_epoch_{}.pth'.format(checkpoint_path, normal_class, last_checkpoint)
-        print(name)
         model.load_state_dict(torch.load(name))
         if not pretrain:
             vgg.load_state_dict(

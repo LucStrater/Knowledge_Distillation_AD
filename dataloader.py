@@ -122,7 +122,7 @@ def load_localization_data(config):
         transforms.ToTensor()
     ])
 
-    test_data_path = 'Dataset/MVTec/' + normal_class + '/test'
+    test_data_path = 'Dataset/MVTec/' + str(normal_class) + '/test'
     test_set = ImageFolder(root=test_data_path, transform=orig_transform)
     test_dataloader = torch.utils.data.DataLoader(
         test_set,
@@ -130,7 +130,7 @@ def load_localization_data(config):
         shuffle=False,
     )
 
-    ground_data_path = 'Dataset/MVTec/' + normal_class + '/ground_truth'
+    ground_data_path = 'Dataset/MVTec/' + str(normal_class) + '/ground_truth'
     ground_dataset = ImageFolder(root=ground_data_path, transform=orig_transform)
     ground_dataloader = torch.utils.data.DataLoader(
         ground_dataset,
