@@ -17,6 +17,8 @@ TBA
 
 **Wednesday (8 hours):** Started making my own load data function, because the pretrained ViT was trained on resized CIFAR10 and because the original code-base used the same set for validation and testing. This was suprisingly hard, also to get it working with the pretrained ViT. In the afternoon I started to implement the to-be-trained ViT in pytorch lightning. 
 
+**Thursday (8 hours):** Started of by having to come back to my dataloader as it was not working as intended afterall. Then finished implementing the ViT, and spend a lot of time on fixing bugs and trying to understand the detection_tes() function in the original code base. End of day I actually get very good results, but still only for little epochs trained and only for normal_class=3.
+
 
 
 
